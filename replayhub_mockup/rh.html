@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Grid</title>
+     <style>
+        /* Style for the image grid */
+        .image-grid {
+			display: inline-grid;
+			grid-template-columns: repeat(6, 1fr);
+			grid-row-gap: 2px; /* Remove the vertical gap */
+			grid-column-gap: 2px; /* Remove the horizontal gap */
+			max-width: 600px;
+			max-width: 600px;
+			margin: 0 auto;
+		}
+        
+        /* Style for the images */
+        .image-grid img {
+            max-width: 100%;
+            height: auto;
+            cursor: pointer;
+        }
+
+        /* Style for the text field */
+        #image-info {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+			
+        }
+		
+		.character-grid-left{
+			display: inline-grid;
+			grid-template-columns: repeat(6, 1fr);
+			grid-row-gap: 2px; /* Remove the vertical gap */
+			grid-column-gap: 2px; /* Remove the horizontal gap */
+			max-width: 600px;
+			max-width: 600px;
+			margin: 0 auto;
+		}
+		
+		.character-grid-right{
+			display: inline-grid;
+			grid-template-columns: repeat(6, 1fr);
+			grid-row-gap: 2px; /* Remove the vertical gap */
+			grid-column-gap: 2px; /* Remove the horizontal gap */
+			max-width: 600px;
+			max-width: 600px;
+			margin: 0 auto;
+		}
+		
+		.character-select-container{
+			display: grid;
+			grid-auto-flow: column;
+			align-items: center; /* Vertically center items */
+		}
+		
+    </style>
+</head>
+<body>
+    <!-- Image grid container -->
+	<div class="character-select-container">
+		<div class="image-grid">
+			<!-- Replace these image URLs with your own -->
+			<img src="64px-SF6_Blanka_Icon.png" alt="Blanka">
+			<img src="64px-SF6_Cammy_Icon.png" alt="Cammy">
+			<img src="64px-SF6_Chun-Li_Icon.png" alt="Chun Li">
+			<img src="64px-SF6_DeeJay_Icon.png" alt="DeeJay">
+			<img src="64px-SF6_Dhalsim_Icon.png" alt="Dhalsim">
+			<img src="64px-SF6_Ehonda_Icon.png" alt="E. Honda">
+			<img src="64px-SF6_Guile_Icon.png" alt="Guile">
+			<img src="64px-SF6_Jamie_Icon.png" alt="Jamie">
+			<img src="64px-SF6_JP_Icon.png" alt="JP">
+			<img src="64px-SF6_Juri_Icon.png" alt="Juri">
+			<img src="64px-SF6_Ken_Icon.png" alt="Ken">
+			<img src="64px-SF6_Kimberly_Icon.png" alt="Kimberly">
+			<img src="64px-SF6_Lily_Icon.png" alt="Lily">
+			<img src="64px-SF6_Luke_Icon.png" alt="Luke">
+			<img src="64px-SF6_Manon_Icon.png" alt="Manon">
+			<img src="64px-SF6_Marisa_Icon.png" alt="Marisa">
+			<img src="64px-SF6_Rashid_Icon.png" alt="Rashid">
+			<img src="64px-SF6_Ryu_Icon.png" alt="Ryu">
+		</div>
+	
+		<div class="vs-image">
+            <img src="Street_Fighter_VS_logo.png" alt="VS Logo">
+        </div>
+		
+		<div class="image-grid">
+			<!-- Replace these image URLs with your own -->
+			<img src="64px-SF6_Blanka_Icon.png" alt="Blanka">
+			<img src="64px-SF6_Cammy_Icon.png" alt="Cammy">
+			<img src="64px-SF6_Chun-Li_Icon.png" alt="Chun Li">
+			<img src="64px-SF6_DeeJay_Icon.png" alt="DeeJay">
+			<img src="64px-SF6_Dhalsim_Icon.png" alt="Dhalsim">
+			<img src="64px-SF6_Ehonda_Icon.png" alt="E. Honda">
+			<img src="64px-SF6_Guile_Icon.png" alt="Guile">
+			<img src="64px-SF6_Jamie_Icon.png" alt="Jamie">
+			<img src="64px-SF6_JP_Icon.png" alt="JP">
+			<img src="64px-SF6_Juri_Icon.png" alt="Juri">
+			<img src="64px-SF6_Ken_Icon.png" alt="Ken">
+			<img src="64px-SF6_Kimberly_Icon.png" alt="Kimberly">
+			<img src="64px-SF6_Lily_Icon.png" alt="Lily">
+			<img src="64px-SF6_Luke_Icon.png" alt="Luke">
+			<img src="64px-SF6_Manon_Icon.png" alt="Manon">
+			<img src="64px-SF6_Marisa_Icon.png" alt="Marisa">
+			<img src="64px-SF6_Rashid_Icon.png" alt="Rashid">
+			<img src="64px-SF6_Ryu_Icon.png" alt="Ryu">
+		</div>
+	</div>
+	
+    <!-- Text field for image info -->
+    <input type="text" id="image-info" readonly placeholder="Select character 1">
+
+    <!-- JavaScript to handle image interactions -->
+    <script>
+        const imageInfo = document.getElementById("image-info");
+        const images = document.querySelectorAll(".image-grid img");
+
+        // Function to update the text field with image name
+        function updateTextField(event) {
+            const imageName = event.target.alt;
+            imageInfo.value = imageName;
+        }
+
+        // Function to update the text field placeholder on image hover
+        function updatePlaceholder(event) {
+            const imageName = event.target.alt;
+            imageInfo.placeholder = `${imageName}`;
+        }
+
+        // Add event listeners to each image
+        images.forEach((image) => {
+            image.addEventListener("click", updateTextField);
+            image.addEventListener("mouseover", function () {
+                // Remove the 'image-hovered' class from all images
+                //images.forEach((img) => img.classList.remove("image-hovered"));
+                // Add the 'image-hovered' class to the hovered image
+                //this.style.border="2px solid red";
+				
+				this.style.boxShadow = "0 0 50px maroon";
+                updatePlaceholder(event);
+            });
+            image.addEventListener("mouseout", function () {
+                // Remove the 'image-hovered' class from all images when the mouse leaves
+                //images.forEach((img) => img.classList.remove("image-hovered"));
+				
+				
+				this.style.boxShadow = "none";
+                imageInfo.placeholder = "Select Character by clicking";
+            });
+        });
+    </script>
+</body>
+</html>
